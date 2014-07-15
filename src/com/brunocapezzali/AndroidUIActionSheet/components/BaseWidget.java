@@ -1,5 +1,8 @@
 package com.brunocapezzali.AndroidUIActionSheet.components;
 
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.view.View;
 
 /**
@@ -8,12 +11,14 @@ import android.view.View;
  */
 public abstract class BaseWidget {
 
-    private int mViewId;
+    protected int mViewId;
+    protected View mView = null;
 
     public BaseWidget(int viewId) {
         mViewId = viewId;
     }
 
     public int getViewId() { return mViewId; }
-    public abstract View getView(View parent);
+    public View getView() { return mView; }
+    public abstract View generateView(View parent);
 }
