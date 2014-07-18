@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by brunocapezzali on 14/07/2014.
+ * Created by Bruno Capezzali on 14/07/2014.
  *
  */
 public class AndroidActionSheet extends PopupWindow implements View.OnTouchListener {

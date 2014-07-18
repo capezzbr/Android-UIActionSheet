@@ -3,19 +3,21 @@ package com.brunocapezzali.androiduiactionsheet;
 import android.view.View;
 
 /**
- * Created by brunocapezzali on 14/07/2014.
+ * Created by Bruno Capezzali on 14/07/2014.
  *
  */
 public abstract class BaseWidget {
 
-    protected int mViewId;
+    protected int mTag;
+    protected int mResourceViewId;
     protected View mView = null;
 
-    public BaseWidget(int viewId) {
-        mViewId = viewId;
+    public BaseWidget(int tag, int viewId) {
+        mTag = tag;
+        mResourceViewId = viewId;
     }
 
-    public int getViewId() { return mViewId; }
+    public int getTag() { return mTag; }
     public View getView() { return mView; }
     public abstract View generateView(View parent);
 }

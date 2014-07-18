@@ -6,26 +6,24 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * Created by brunocapezzali on 14/07/2014.
+ * Created by Bruno Capezzali on 14/07/2014.
+ *
  */
 public class ButtonWidget extends BaseWidget {
 
-    private int mTag;
     private String mLabel;
     private OnWidgetClickListener mClickListener;
 
-    public ButtonWidget(String label, OnWidgetClickListener onClickListener) {
-        super(R.layout.button_widget);
+    public ButtonWidget(int tag, String label, OnWidgetClickListener onClickListener) {
+        super(tag, R.layout.button_widget);
         mLabel = label;
         mClickListener = onClickListener;
     }
 
-    public void setTag(int tag) {
-        mTag = tag;
-    }
-
-    public int getTag() {
-        return mTag;
+    public ButtonWidget(String label, OnWidgetClickListener onClickListener) {
+        super(0, R.layout.button_widget);
+        mLabel = label;
+        mClickListener = onClickListener;
     }
 
     public String getLabel() {
@@ -40,7 +38,7 @@ public class ButtonWidget extends BaseWidget {
         if ( mView == null ) {
             Context ctx = parent.getContext();
             LayoutInflater layoutInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            mView= layoutInflater.inflate(mViewId, null);
+            mView= layoutInflater.inflate(mResourceViewId, null);
 
             Button btn = (Button)mView.findViewById(R.id.button);
             btn.setText(mLabel);

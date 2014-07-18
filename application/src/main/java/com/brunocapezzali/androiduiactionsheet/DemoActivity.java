@@ -15,10 +15,10 @@ public class DemoActivity extends Activity implements OnWidgetClickListener {
         setContentView(R.layout.activity_demo);
 
         mActionSheet = new AndroidActionSheet(this);
-        mActionSheet.addWidget(new ButtonWidget("Export", this));
-        mActionSheet.addWidget(new ButtonWidget("Test all", this));
+        mActionSheet.addWidget(new ButtonWidget(1, "Export", this));
+        mActionSheet.addWidget(new ButtonWidget(2, "Test all", this));
         mActionSheet.addWidget(new SpaceWidget());
-        mActionSheet.addWidget(new ButtonWidget("Save all", this));
+        mActionSheet.addWidget(new ButtonWidget(3, "Save all", this));
     }
 
     public void openPopup(View view) {
@@ -28,7 +28,10 @@ public class DemoActivity extends Activity implements OnWidgetClickListener {
     @Override
     public void onClicked(BaseWidget widget) {
         ButtonWidget button = (ButtonWidget)widget;
-        Toast.makeText(widget.getView().getContext(), "Button Clicked: " + button.getLabel(), Toast.LENGTH_SHORT).show();
+        String label = button.getLabel();
+        int tag = button.getTag();
 
+        Toast.makeText(widget.getView().getContext(), "Button #"+ tag +" clicked: " + label,
+                Toast.LENGTH_SHORT).show();
     }
 }
