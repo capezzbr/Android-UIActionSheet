@@ -9,17 +9,17 @@ import android.widget.LinearLayout;
 /**
  * Created by Bruno Capezzali on 15/07/2014.
  */
-public class SpaceWidget extends BaseWidget {
+public class DividerWidget extends BaseWidget {
 
     private boolean mOnlySpace = true;
     private int mHeight;
 
-    public SpaceWidget(int height) {
+    public DividerWidget(int height) {
         super(R.layout.divider_widget);
         init(true, height);
     }
 
-    public SpaceWidget() {
+    public DividerWidget() {
         super(R.layout.divider_widget);
         init(false, 0);
     }

@@ -17,7 +17,7 @@ public class DemoActivity extends Activity implements OnWidgetClickListener {
         mActionSheet = new AndroidActionSheet(this);
         mActionSheet.addWidget(new ButtonWidget(1, "Export", this));
         mActionSheet.addWidget(new ButtonWidget(2, "Test all", this));
-        mActionSheet.addWidget(new SpaceWidget());
+        mActionSheet.addWidget(new DividerWidget());
         mActionSheet.addWidget(new ButtonWidget(3, "Save all", this));
     }
 
