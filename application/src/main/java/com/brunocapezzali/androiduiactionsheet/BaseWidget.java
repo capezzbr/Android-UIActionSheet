@@ -12,12 +12,15 @@ public abstract class BaseWidget {
     protected int mResourceViewId;
     protected View mView = null;
 
-    public BaseWidget(int tag, int viewId) {
-        mTag = tag;
+    public BaseWidget(int viewId) {
         mResourceViewId = viewId;
     }
 
-    public int getTag() { return mTag; }
-    public View getView() { return mView; }
+    public int getResourceViewId() { return mResourceViewId; }
+
     public abstract View generateView(View parent);
+    public View getView() { return mView; }
+
+    public int getTag() { return mTag; }
+    public void setTag(int tag) { mTag = tag; }
 }
