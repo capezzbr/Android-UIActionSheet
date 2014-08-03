@@ -20,17 +20,22 @@ public class ButtonWidget extends BaseWidget {
 
     public ButtonWidget(String label, OnWidgetClickListener onClickListener) {
         super(R.layout.button_widget);
-        init(-1, label, onClickListener);
+        init(-1, label, null, 0, onClickListener);
     }
 
-    public ButtonWidget(int tag, String label, OnWidgetClickListener onClickListener) {
+    public ButtonWidget(int tag, String label, Drawable icon, int iconPadding,
+                        OnWidgetClickListener onClickListener) {
+
         super(R.layout.button_widget);
-        init(tag, label, onClickListener);
+        init(tag, label, icon, iconPadding, onClickListener);
     }
 
-    public void init(int tag, String label, OnWidgetClickListener onClickListener) {
+    public void init(int tag, String label, Drawable icon, int iconPadding,
+                     OnWidgetClickListener onClickListener) {
         mTag = tag;
         mLabel = label;
+        mIcon = icon;
+        mIconPadding = iconPadding;
         mClickListener = onClickListener;
     }
 
@@ -45,11 +50,17 @@ public class ButtonWidget extends BaseWidget {
 
         if ( mView == null ) {
             Context ctx = parent.getContext();
-            LayoutInflater layoutInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            mView= layoutInflater.inflate(mResourceViewId, null);
+            LayoutInflater layoutInflater = (LayoutInflater)
+                    ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            mView = layoutInflater.inflate(mResourceViewId, null);
 
             Button btn = (Button)mView.findViewById(R.id.button);
             btn.setText(mLabel);
+
+            if ( mIcon != null ) {
+                btn.setCompoundDrawablesWithIntrinsicBounds(mIcon, null, null, null);
+                btn.setCompoundDrawablePadding(mIconPadding);
+            }
 
             final BaseWidget self = this;
             btn.setOnClickListener(new View.OnClickListener() {
