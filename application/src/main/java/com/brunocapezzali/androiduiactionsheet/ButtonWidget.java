@@ -1,6 +1,7 @@
 package com.brunocapezzali.androiduiactionsheet;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,14 +15,21 @@ public class ButtonWidget extends BaseWidget {
     private String mLabel;
     private OnWidgetClickListener mClickListener;
 
-    public ButtonWidget(int tag, String label, OnWidgetClickListener onClickListener) {
-        super(tag, R.layout.button_widget);
-        mLabel = label;
-        mClickListener = onClickListener;
-    }
+    private Drawable mIcon = null;
+    private int mIconPadding;
 
     public ButtonWidget(String label, OnWidgetClickListener onClickListener) {
-        super(0, R.layout.button_widget);
+        super(R.layout.button_widget);
+        init(-1, label, onClickListener);
+    }
+
+    public ButtonWidget(int tag, String label, OnWidgetClickListener onClickListener) {
+        super(R.layout.button_widget);
+        init(tag, label, onClickListener);
+    }
+
+    public void init(int tag, String label, OnWidgetClickListener onClickListener) {
+        mTag = tag;
         mLabel = label;
         mClickListener = onClickListener;
     }
